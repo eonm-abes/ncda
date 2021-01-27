@@ -14,11 +14,11 @@ NCDA (Noid Check Digit Algorithm) is an algorithm used to compute or validate NO
 
 NCDA works well with identifiers such as ARKs. It can be used to assert that an ID doesn't contains transcription error.
 
-NCDA is a part of the NOID project which was developed by John A. Kunze (@jkunze).
+NCDA is a part of the NOID project which was developed by John A. Kunze ([@jkunze](https://github.com/jkunze)).
 
 ## Motivation
 
-This project is primerly a learning project. It has been inspired by the [ark-tools](https://github.com/BertrandCaron/ark-tools) project made by Bertrand Carron (@BertrandCaron). 
+This project is primerly a learning project. It has been inspired by the [ark-tools](https://github.com/BertrandCaron/ark-tools) project made by Bertrand Carron ([@BertrandCaron](https://github.com/BertrandCaron)). 
 
 This project is an attempt to build a full featured Rust app from A to Z with few goals in mind:
 
@@ -135,7 +135,7 @@ node index.js
 * [The Noid project on CPAN](https://metacpan.org/pod/distribution/Noid/noid) (Perl) [original implementation]
 * [node-inist-ark](https://github.com/Inist-CNRS/node-inist-ark) (Nodejs)
 * [Noid4Php](https://github.com/Daniel-KM/Noid4Php/blob/master/noid) (PHP)
-* [ark-tools](https://github.com/BertrandCaron/ark-tools)  (Python)
+* [ark-tools](https://github.com/BertrandCaron/ark-tools) (Python)
 
 ## References
 
