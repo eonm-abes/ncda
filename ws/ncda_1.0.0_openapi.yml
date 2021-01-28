@@ -1,0 +1,257 @@
+---
+openapi: 3.0.0
+info:
+  title: NCDA API
+  description: |-
+    Check and compute checksum char with NCDA  (Noid Check Digit Algorithm)
+
+    [Github repository](https://github.com/eonm-abes/ncda)
+  contact:
+    name: Mathis EON
+    email: eon@abes.fr
+  license:
+    name: MIT
+    url: https://github.com/eonm-abes/ncda/blob/main/LICENSE
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/eonm-abes/ncda/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: http://127.0.0.1:8080/v1
+  description: NCDA local API
+paths:
+  /check:
+    get:
+      summary: Validates the NCDA checksum char
+      description: |
+        Checks the checksum char of an ID or a list of IDs with the NCDA algorithm
+      operationId: check
+      parameters:
+      - name: ids
+        in: query
+        description: A comma separated list of of IDs
+        required: true
+        style: form
+        explode: true
+        schema:
+          minimum: 1
+          type: string
+      responses:
+        "200":
+          description: No error encountered
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CheckSumResult'
+              examples:
+                Check a valid ID:
+                  value:
+                  - cb32752361d: true
+                Check a list of valid IDs:
+                  value:
+                  - cb32752361d: true
+                  - cb32752361d: true
+                Check a list of valid and invalid IDs:
+                  value:
+                  - cb32752361d: true
+                  - cb32752361z:
+                      InvalidChecksum:
+                        computed_checksum: d
+                        expected: z
+                        for_input_data: cb32752361z
+                Check an invalid ID:
+                  value:
+                  - cb32752361z:
+                      InvalidChecksum:
+                        computed_checksum: d
+                        expected: z
+                        for_input_data: cb32752361z
+                Check an ID with an invalid length (too short):
+                  value:
+                  - ? ""
+                    : InputDataTooShort: 0
+                Check an ID with an invalid length (too long):
+                  value:
+                  - cb32752361dcb32752361dcb32752361d:
+                      InputDataTooLong: 32
+                Check an ID containing an invalid char:
+                  value:
+                  - cb3275'2361z:
+                      InvalidInputChar:
+                        expected_one_of:
+                        - "0"
+                        - "1"
+                        - "2"
+                        - "3"
+                        - "4"
+                        - "5"
+                        - "6"
+                        - "7"
+                        - "8"
+                        - "9"
+                        - b
+                        - c
+                        - d
+                        - f
+                        - g
+                        - h
+                        - j
+                        - k
+                        - m
+                        - "n"
+                        - p
+                        - q
+                        - r
+                        - s
+                        - t
+                        - v
+                        - w
+                        - x
+                        - z
+                        found: ''''
+                        for_input_data: cb3275'2361z
+  /checksum:
+    get:
+      summary: Compute the NCDA checksum
+      description: |
+        Computes the checksum char of an ID or a list of IDs with the NCDA algorithm
+      operationId: checksum
+      parameters:
+      - name: ids
+        in: query
+        description: A comma separated list of of IDs
+        required: true
+        style: form
+        explode: true
+        schema:
+          minimum: 1
+          type: string
+      responses:
+        "200":
+          description: No error encountered
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CheckResult'
+              examples:
+                Compute the checksum of a signle ID:
+                  value:
+                  - cb32752361: d
+                Compute the checksum of multiple IDs:
+                  value:
+                  - cb32752361: d
+                  - cb32752361: d
+                Compute the checksum of an ID with an invalid length (too short):
+                  value:
+                  - c:
+                      InputDataTooShort: 1
+                Compute the checksum of an ID with an invalid length (too long):
+                  value:
+                  - cb32752361dcb32752361dcb32752361d:
+                      InputDataTooLong: 32
+                Compute the checksum of an ID containing an invalid  char:
+                  value:
+                  - cb3275'2361z:
+                      InvalidInputChar:
+                        expected_one_of:
+                        - "0"
+                        - "1"
+                        - "2"
+                        - "3"
+                        - "4"
+                        - "5"
+                        - "6"
+                        - "7"
+                        - "8"
+                        - "9"
+                        - b
+                        - c
+                        - d
+                        - f
+                        - g
+                        - h
+                        - j
+                        - k
+                        - m
+                        - "n"
+                        - p
+                        - q
+                        - r
+                        - s
+                        - t
+                        - v
+                        - w
+                        - x
+                        - z
+                        found: ''''
+                        for_input_data: cb3275'2361z
+components:
+  schemas:
+    CheckSumResult:
+      type: array
+      items:
+        anyOf:
+        - $ref: '#/components/schemas/CheckSumResultSuccess'
+        - $ref: '#/components/schemas/CheckSumResultFailure'
+    CheckSumResultSuccess:
+      type: object
+      properties:
+        id:
+          type: string
+    CheckSumResultFailure:
+      type: object
+      properties:
+        id:
+          type: boolean
+          oneOf:
+          - $ref: '#/components/schemas/InvalidInputChar'
+          - $ref: '#/components/schemas/InputDataTooShort'
+          - $ref: '#/components/schemas/InputDataTooLong'
+    CheckResult:
+      type: array
+      items:
+        anyOf:
+        - $ref: '#/components/schemas/CheckResultSuccess'
+        - $ref: '#/components/schemas/CheckResultFailure'
+    CheckResultSuccess:
+      type: object
+      properties:
+        id:
+          type: boolean
+    CheckResultFailure:
+      type: object
+      properties:
+        id:
+          type: boolean
+          oneOf:
+          - $ref: '#/components/schemas/InvalidChecksum'
+          - $ref: '#/components/schemas/InvalidInputChar'
+          - $ref: '#/components/schemas/InputDataTooShort'
+          - $ref: '#/components/schemas/InputDataTooLong'
+    InvalidChecksum:
+      type: object
+      properties:
+        computed_checksum:
+          type: string
+        expected:
+          type: string
+        for_input_data:
+          type: string
+    InputDataTooShort:
+      type: integer
+    InputDataTooLong:
+      type: integer
+    InvalidInputChar:
+      type: object
+      properties:
+        expected_one_of:
+          type: array
+          items:
+            type: string
+        found:
+          type: string
+        for_input_data:
+          type: string
