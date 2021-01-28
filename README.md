@@ -2,7 +2,7 @@
 
 # NCDA (Noid Check Digit Algorithm)
 
-A blazingly fast and lightwheight Rust implementation of the NCDA checking algorithm
+A blazingly fast and lightweight Rust implementation of the NCDA checking algorithm
 
 [![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
