@@ -27,6 +27,7 @@ This project is an attempt to build a full featured Rust app from A to Z with fe
 * Learn how to build Web Services with [Rocket.rs](https://www.rocket.rs/) 🚀
 * Lean how to build GUI app with [Tauri](https://github.com/tauri-apps/tauri) ⛩️
 * Keep learning things about Rust optimization and error handling 🦀
+* Learn basic concepts of [OpenApi](https://www.openapis.org/)
 
 This project tries to produce real outcomes such as :
 
