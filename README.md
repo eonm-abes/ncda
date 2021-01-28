@@ -124,11 +124,15 @@ node index.js
 
 > Like any benchmark you might get slightly different results on your system. The following results are provided solely for information purposes.
 
+<div align="center">
+
 | Measure                  | ID length | Result             | Tool          |
 | ------------------------ | :-------: | ------------------ | ------------- |
 | `ncda::check`            |    11     | 23 ns/iter (+/- 3) | `cargo bench` |
 | `ncda::checksum`         |    10     | 26 ns/iter (+/- 0) | `cargo bench` |
 | Total memory consumption |    11     | 72.7 ko            | `heaptrack`   |
+
+</div>
 
 ## Other implementations and related projects (not limited)
 
