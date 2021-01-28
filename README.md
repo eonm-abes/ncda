@@ -64,7 +64,7 @@ ncda = "*"
 
 2- Add the following code to `src/main.rs` :
 
-```rs
+```rust
 use ncda;
 
 fn main() {
