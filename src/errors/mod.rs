@@ -28,14 +28,14 @@ impl Error for NcdaError {}
 /// The computed checksum isn't valid
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct InvalidChecksum {
-    pub calculate_checksum : char,
+    pub computed_checksum : char,
     pub for_input_data: String,
     pub expected: char,
 }
 
 impl fmt::Display for InvalidChecksum {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "Invalid checksum calculate checksum {} for {} expected {}", self.calculate_checksum, self.expected, self.for_input_data)
+        write!(f, "Invalid checksum calculate checksum {} for {} expected {}", self.computed_checksum, self.expected, self.for_input_data)
     }
 }
 

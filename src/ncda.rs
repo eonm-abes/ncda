@@ -60,9 +60,9 @@ pub fn check<R: AsRef<str>>(input: R) -> Result<(), NcdaError> {
             return Ok(())
         } else {
             return Err(NcdaError::InvalidChecksum(InvalidChecksum {
-                calculate_checksum: last_char,
+                computed_checksum: checksum,
                 for_input_data: data.to_string(),
-                expected: checksum,
+                expected: last_char,
             }))
         }
     } else {
@@ -94,8 +94,8 @@ mod tests {
         assert_eq!(check("cb32752361d").is_ok(), true);
 
         assert_eq!(check("cb32752361x"), Err(NcdaError::InvalidChecksum(InvalidChecksum{
-            calculate_checksum: 'x',
-            expected: 'd',
+            computed_checksum: 'd',
+            expected: 'x',
             for_input_data: "cb32752361x".into(),
         })));
 
