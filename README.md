@@ -18,7 +18,7 @@ NCDA is a part of the NOID project which was developed by John A. Kunze ([@jkunz
 
 ## Motivation
 
-This project is primerly a learning project. It has been inspired by the [ark-tools](https://github.com/BertrandCaron/ark-tools) project made by Bertrand Carron ([@BertrandCaron](https://github.com/BertrandCaron)). 
+This project is primarily a learning project. It has been inspired by the [ark-tools](https://github.com/BertrandCaron/ark-tools) project made by Bertrand Carron ([@BertrandCaron](https://github.com/BertrandCaron)). 
 
 This project is an attempt to build a full featured Rust app from A to Z with few goals in mind:
 
@@ -28,7 +28,7 @@ This project is an attempt to build a full featured Rust app from A to Z with fe
 * Lean how to build GUI app with [Tauri](https://github.com/tauri-apps/tauri) ⛩️
 * Keep learning things about Rust optimization and error handling 🦀
 
-This project try to produce real outcomes such as :
+This project tries to produce real outcomes such as :
 
 - [ ]  A CLI
 - [ ]  A GUI
@@ -81,7 +81,7 @@ cargo run
 
 ### Nodejs
 
-> This section explains how to compile the ncda library into a Nodejs module and how to use this module inside yout Nodejs app.
+> This section explains how to compile the ncda library into a Nodejs module and how to use this module inside your Nodejs app.
 
 1- Compile the ncda library to Nodejs with wasm-pack :
 
