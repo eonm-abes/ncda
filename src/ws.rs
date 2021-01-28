@@ -6,7 +6,8 @@ use rocket_contrib::json::Json;
 use std::collections::HashMap;
 
 
-#[get("/check/<ids>")]
+// http://0.0.0.0:8080/v1/check?ids=cb32752361d,cb32752361d,cb32752361d
+#[get("/v1/check?<ids>")]
 fn check(ids: String) -> Json<Vec<Value>> {
     let ids = ids.split(",").into_iter().map(|id| {
         match ncda::check(id) {
@@ -30,7 +31,8 @@ fn check(ids: String) -> Json<Vec<Value>> {
     Json(ids)
 }
 
-#[get("/checksum/<ids>")]
+// http://0.0.0.0:8080/v1/checksum?ids=cb32752361d,cb32752361d,cb32752361d
+#[get("/v1/checksum?<ids>")]
 fn checksum(ids: String) -> Json<Vec<Value>> {
     let result = ids.split(",").into_iter().map(|id| {
         
