@@ -50,6 +50,8 @@ This implementation of NCDA provides bindings with :
 ### Rust
 
 > This section explains how to use the NCDA crate inside your Rust project.
+>
+> You can try this example with : `cargo run --example basic`
 
 1- Create a new Rust project with cargo :
 
@@ -70,9 +72,14 @@ ncda = "*"
 ```rust
 use ncda;
 
-fn main() {
-    assert_eq!(ncda::checksum("cb32752361"), Ok('d'));
-    assert_eq!(ncda::check("cb32752361d"), Ok(()));
+fn main() -> Result<(), ncda::NcdaError> {
+    let unqualified_id = "cb32752361";
+    println!("The checksum char of {} is : {:?}", unqualified_id, ncda::checksum(unqualified_id)?);
+    
+    let qualified_id = "cb32752361d";
+    println!("{} is valid : {:?}", qualified_id, ncda::check(qualified_id).is_ok());
+
+    Ok(())
 }
 ```
 
@@ -89,7 +96,7 @@ cargo run
 1- Compile the ncda library to Nodejs with wasm-pack :
 
 ```sh
-wasm-pack build --release --target nodejs
+wasm-pack build --release --target Nodejs
 ```
 
 2- Create a basic Nodejs project :
