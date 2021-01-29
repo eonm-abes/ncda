@@ -87,7 +87,7 @@ cargo run
 1- Compile the ncda library to Nodejs with wasm-pack :
 
 ```sh
-wasm-pack build --release --target Nodejs
+wasm-pack build --release --target nodejs
 ```
 
 2- Create a basic Nodejs project :
