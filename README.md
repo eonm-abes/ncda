@@ -33,7 +33,7 @@ This project is an attempt to build a full featured Rust app from A to Z with fe
 
 This project tries to produce real outcomes such as :
 
-- [ ]  A CLI
+- [x]  A CLI
 - [ ]  A GUI
 - [x]  A Web Service
 - [x]  A Rust library
