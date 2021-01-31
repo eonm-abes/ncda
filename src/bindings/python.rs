@@ -2,6 +2,7 @@ use crate::errors::NcdaError;
 use crate::ncda;
 
 use pyo3::prelude::*;
+use pyo3::wrap_pyfunction;
 
 impl std::convert::From<NcdaError> for pyo3::PyErr {
     fn from(err: NcdaError) -> Self {
@@ -27,4 +28,12 @@ pub fn check(input: &str) -> PyResult<bool> {
     };
 
     Ok(x?)
+}
+
+#[pymodule]
+fn ncda(py: Python, m: &PyModule) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(checksum, m)?)?;
+    m.add_function(wrap_pyfunction!(check, m)?)?;
+
+    Ok(())
 }
