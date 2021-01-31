@@ -1,7 +1,7 @@
 use std::error::Error;
 use std::fmt;
 
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 /// An enum that holds all possible errors
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -18,7 +18,7 @@ impl fmt::Display for NcdaError {
             Self::InputDataTooShort(e) => write!(f, "{}", e),
             Self::InputDataTooLong(e) => write!(f, "{}", e),
             Self::InvalidInputChar(e) => write!(f, "{}", e),
-            Self::InvalidChecksum(e) =>  write!(f, "{}", e),
+            Self::InvalidChecksum(e) => write!(f, "{}", e),
         }
     }
 }
@@ -28,14 +28,18 @@ impl Error for NcdaError {}
 /// The computed checksum isn't valid
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct InvalidChecksum {
-    pub computed_checksum : char,
+    pub computed_checksum: char,
     pub for_input_data: String,
     pub expected: char,
 }
 
 impl fmt::Display for InvalidChecksum {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "Invalid checksum calculate checksum {} for {} expected {}", self.computed_checksum, self.expected, self.for_input_data)
+        write!(
+            f,
+            "Invalid checksum. Computed {} for {} expected {}",
+            self.computed_checksum, self.for_input_data, self.expected
+        )
     }
 }
 
@@ -75,9 +79,12 @@ pub struct InvalidInputChar {
 
 impl fmt::Display for InvalidInputChar {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "Invalid input char found {} in {}. Expected one of {:?}", self.found, self.in_input_data, self.expected_one_of)
+        write!(
+            f,
+            "Invalid input char found {} in {}. Expected one of {:?}",
+            self.found, self.in_input_data, self.expected_one_of
+        )
     }
 }
 
 impl Error for InvalidInputChar {}
-
