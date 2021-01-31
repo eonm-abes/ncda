@@ -91,7 +91,7 @@ cargo run
 
 ### Nodejs
 
-> This section explains how to compile the ncda library into a Nodejs module and how to use this module inside your Nodejs app.
+> This section explains how to compile the ncda library into a Nodejs module and how to use it inside your Nodejs app.
 
 1- Compile the ncda library to Nodejs with wasm-pack :
 
@@ -128,7 +128,7 @@ node index.js
 
 ### Python
 
-> This section explains how to compile the ncda library into a Python native module and how to use this module inside your Python app.
+> This section explains how to compile the ncda library into a Python native module and how to use it inside your Python app.
 
 1- Build the library with cargo :
 
