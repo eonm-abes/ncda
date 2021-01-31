@@ -45,6 +45,35 @@ This implementation of NCDA provides bindings with :
 * Nodejs
 * Python
 
+If this project reachs a stable state I will consider adding the ncda lib to [crates.io](https://crates.io/), [npm](https://www.npmjs.com/) and [pipy](https://pypi.org/).
+
+## CLI
+
+```sh
+ncda 0.1.0
+Mathis EON <eon@abes.fr>
+Checks and computes the checksum char of a Noid with the NCDA (Noid Check Digit Algorithm) algorithm
+
+USAGE:
+    ncda [SUBCOMMAND]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    check       Checks NOIDs
+    checksum    Computes the checksum char of NOIDs
+    help        Prints this message or the help of the given subcommand(s)
+    ws          Starts the NCDA Web Service
+```
+
+Example : checking a list of NOIDs stored in a file
+
+```
+ncda check -i my_file.txt -o output.txt
+```
+
 ## Build 
 
 ### Rust
@@ -64,7 +93,7 @@ cd ncda-checking
 
 ```toml
 [dependencies]
-ncda = "*"
+ncda = {git = "https://github.com/eonm-abes/ncda"}
 ```
 
 2- Add the following code to `src/main.rs` :
@@ -91,7 +120,7 @@ cargo run
 
 ### Nodejs
 
-> This section explains how to compile the ncda library into a Nodejs module and how to use it inside your Nodejs app.
+> This section explains how to compile the NCDA library into a Nodejs module and how to use it inside your Nodejs app.
 
 1- Compile the ncda library to Nodejs with wasm-pack :
 
@@ -128,7 +157,7 @@ node index.js
 
 ### Python
 
-> This section explains how to compile the ncda library into a Python native module and how to use it inside your Python app.
+> This section explains how to compile the NCDA library into a Python native module and how to use it inside your Python app.
 
 1- Build the library with cargo :
 
