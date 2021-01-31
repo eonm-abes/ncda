@@ -128,7 +128,27 @@ node index.js
 
 ### Python
 
-> 🚧 TODO 🚧
+1- Build the library with cargo :
+
+```sh
+cargo build --release --lib
+```
+
+2- Rename the library file :
+
+```sh
+mv target/release/libncda.so target/release/ncda.so
+```
+
+3- Import and use the library from Python :
+> The `ncda.so` file must be in the same directory as your app
+
+```python3
+import ncda
+
+nda.check("cb32752361d")
+nda.checksum("cb32752361")
+```
 
 ## Benchmark
 
