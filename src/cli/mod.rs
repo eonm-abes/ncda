@@ -8,14 +8,14 @@ pub fn cli() -> ArgMatches<'static> {
         .author(crate_authors!())
         .about(crate_description!())
         .subcommand(
-            SubCommand::with_name("check").about("Checks IDs").arg(
+            SubCommand::with_name("check").about("Checks NOIDs").arg(
                 Arg::with_name("input")
                     .short("i")
                     .long("input")
                     .multiple(true)
                     .min_values(1)
                     .value_name("FILE")
-                    .help("Checks a list of IDs stored in one or more files. One ID per line"),
+                    .help("Checks a list of NOIDs stored in one or more files. One ID per line"),
             )
             .arg(
                 Arg::with_name("output")
@@ -34,14 +34,14 @@ pub fn cli() -> ArgMatches<'static> {
                 ),
         )
         .subcommand(
-            SubCommand::with_name("checksum").about("Computes the checksum char of IDs").arg(
+            SubCommand::with_name("checksum").about("Computes the checksum char of NOIDs").arg(
                 Arg::with_name("input")
                     .short("i")
                     .long("input")
                     .multiple(true)
                     .min_values(1)
                     .value_name("FILE")
-                    .help("Computes the checksum char of a list of IDs stored in one or more file. One ID per line")
+                    .help("Computes the checksum char of a list of NOIDs stored in one or more file. One ID per line")
                 )
                 .arg(
                     Arg::with_name("output")
