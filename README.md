@@ -74,6 +74,18 @@ Example : checking a list of NOIDs stored in a file
 ncda check -i my_file.txt -o output.txt
 ```
 
+## Web Service
+
+The Web Service can be launched from the CLI :
+
+```sh
+ncda ws --port 8080
+```
+
+The Web Service expose two functions `check` and `checksum`. Each function takes a list of comma separated NOIDs as parameter:
+* http://127.0.0.1:8080/v1/check?ids=cb32752361d,cb32752361d
+* http://127.0.0.1:8080/v1/checksum?ids=cb32752361,cb32752361
+
 ## Build 
 
 ### Rust
