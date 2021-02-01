@@ -105,7 +105,7 @@ cd ncda-checking
 
 ```toml
 [dependencies]
-ncda = {git = "https://github.com/eonm-abes/ncda"}
+ncda = {git = "https://github.com/eonm-abes/ncda", branch="main"}
 ```
 
 2- Add the following code to `src/main.rs` :
