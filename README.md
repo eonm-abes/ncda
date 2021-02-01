@@ -22,7 +22,7 @@ NCDA is a part of the NOID project which was developed by John A. Kunze ([@jkunz
 
 This project is primarily a learning project. It has been inspired by the [ark-tools](https://github.com/BertrandCaron/ark-tools) project made by Bertrand Carron ([@BertrandCaron](https://github.com/BertrandCaron)). 
 
-This project is an attempt to build a full featured Rust app from A to Z with few goals in mind:
+This project is an attempt to build a full featured Rust app and lib from A to Z with few goals in mind:
 
 * Learn basic concepts of [WebAssembly](https://webassembly.org/) 🕸
 * Learn how to build python native modules with Rust and [Pyo3](https://github.com/PyO3/pyo3) 🐍
